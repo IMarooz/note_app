@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:note_app_tharwat/constants.dart';
 import 'package:note_app_tharwat/views/notes_view.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(kNotesBox);
   runApp(const NoteApp());
 }
 
@@ -17,7 +21,7 @@ class NoteApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Colors.grey[900],
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins',
       ),
     );
   }
