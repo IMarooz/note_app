@@ -16,6 +16,7 @@ class _NotesViewState extends State<NotesView> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(16),
             ),
