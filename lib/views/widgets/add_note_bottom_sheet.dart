@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app_tharwat/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:note_app_tharwat/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app_tharwat/views/widgets/add_note_form.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
@@ -13,6 +14,10 @@ class AddNoteBottomSheet extends StatelessWidget {
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state is AddNoteSuccess) {
+            // refresh notes list after a successful add
+            try {
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+            } catch (_) {}
             Navigator.pop(context);
           }
           if (state is AddNoteFailure) {
