@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app_tharwat/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app_tharwat/models/note_model.dart';
-import 'package:note_app_tharwat/views/edit_note_view.dart';
+
 import 'package:note_app_tharwat/views/widgets/custom_note_item.dart';
 
 class NotesListView extends StatelessWidget {
@@ -12,10 +12,7 @@ class NotesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const EditNoteView()),
-        );
+        
       },
       child: BlocBuilder<NotesCubit, NotesState>(
         builder: (context, state) {
