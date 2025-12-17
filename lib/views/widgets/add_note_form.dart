@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app_tharwat/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:note_app_tharwat/models/note_model.dart';
+import 'package:note_app_tharwat/views/widgets/colors_list_view.dart';
 import 'package:note_app_tharwat/views/widgets/custom_button.dart';
 import 'package:note_app_tharwat/views/widgets/custom_text_field.dart';
 
@@ -40,6 +41,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
               body = value;
             },
           ),
+          const SizedBox(height: 16),
+          const ColorsListView(),
           const SizedBox(height: 24),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
@@ -73,3 +76,4 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
