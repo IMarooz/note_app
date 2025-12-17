@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app_tharwat/cubits/add_note_cubit/add_note_cubit.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});
@@ -29,16 +31,16 @@ class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0;
 
   final List<Color> colors = <Color>[
-  Color(0xFFB8D8D8), // Seafoam
-  Color(0xFFF7C59F), // Peach
-  Color(0xFF9BB7D4), // Dusty Blue
-  Color(0xFFE6CDAA), // Warm Sand
-  Color(0xFFB7C8A9), // Soft Sage
-  Color(0xFFD9B4E0), // Lavender
-  Color(0xFFCBD7E6), // Frosted Blue
-  Color(0xFFF3D6B8), // Light Apricot
-  Color(0xFFBFD7C7), // Mint Gray
-  Color(0xFFE7C9C0), // Blush
+    Color(0xFF2F4C73), // Slate Blue
+    Color(0xFF818E91), // Stone Gray
+    Color(0xFF9A8373), // Warm Taupe
+    Color(0xFF524344), // Cocoa Deep
+    Color(0xFFF2CA80), // Soft Amber
+    Color(0xFFBE5519), // Burnt Sienna
+    Color(0xFFEB5582), // Strawberry Pink
+    Color(0xFF6E1E28), // Merlot
+    Color(0xFF4A6A5A), // Teal Moss
+    Color(0xFF7A5A45), // Clay Brown 
   ];
 
   @override
@@ -53,9 +55,9 @@ class _ColorsListViewState extends State<ColorsListView> {
             padding: const EdgeInsets.symmetric(horizontal: 6.0),
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  currentIndex = index;
-                });
+                currentIndex = index;
+                BlocProvider.of<AddNoteCubit>(context).color = colors[index];
+                setState(() {});
               },
               child: ColorItem(isActive: currentIndex == index, color: colors[index],),
             ),
